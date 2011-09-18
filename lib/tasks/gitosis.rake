@@ -1,5 +1,3 @@
-
-
 namespace :gitosis do
 
   desc "Imports the data from your gitosis.conf to your database"
@@ -62,7 +60,7 @@ namespace :gitosis do
                 p = Permission.find_or_initialize_by_repository_id_and_public_key_id(r.id, pk.id)
                 if p.new_record?
                   p.send(:create_without_callbacks)
-                  puts "++ Associated public key #{member} with repository #{r.name}"
+                  puts "++ Associated public key #{member} with repository #{r.name}"
                 end
               end
               puts "-" * 20
