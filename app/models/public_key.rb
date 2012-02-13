@@ -10,6 +10,7 @@ class PublicKey < ActiveRecord::Base
   validates_uniqueness_of :source
 
   after_save :persist_publickey, :add_to_git
+  after_update :persist_publickey, :add_to_git
   after_destroy :delete_publickey, :remove_from_git
 
   def to_param
