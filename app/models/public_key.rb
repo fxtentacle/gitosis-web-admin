@@ -28,8 +28,12 @@ class PublicKey < ActiveRecord::Base
   def keyfile
     File.join(configatron.gitosis_admin_root, configatron.gitosis_keydir, self.keyfilename)
   end
+  
+  def to_param
+    description.downcase.gsub(/[^a-z0-9]+/i, '-')
+  end
 
-  def keyfilename
+  def keyfilename    
     "publickey-#{self.to_param}.pub"
   end
 
